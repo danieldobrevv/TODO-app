@@ -7,6 +7,9 @@ body {
 
 .app {
   margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 h1 {
@@ -35,4 +38,10 @@ p:hover {
 .done {
   text-decoration: line-through;
   color: gray;
+}
+
+button {
+  border-radius: 5px;
+  margin-top: 1rem;
+  letter-spacing: 1px;
 }

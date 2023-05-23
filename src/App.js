@@ -7,6 +7,7 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!todo.text) return;
     setTodoList([...todoList, todo]);
     setTodo({ text: "", isDone: false });
   };
@@ -25,7 +26,7 @@ function App() {
   return (
     <div className="app">
       <h1> My TODO </h1>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <form data-testid="form" onSubmit={(e) => handleSubmit(e)}>
         <input
           type="text"
           value={todo.text}
@@ -38,6 +39,7 @@ function App() {
       {todoList.map((task, index) => {
         return (
           <p
+            data-testid="todo"
             className={`${task.isDone ? "done" : null}`}
             onClick={(e) => {
               handleIsDone(e);
@@ -48,6 +50,13 @@ function App() {
           </p>
         );
       })}
+      <button
+        onClick={() => {
+          setTodoList([]);
+        }}
+      >
+        Delete all
+      </button>
     </div>
   );
 }
